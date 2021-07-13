@@ -21,13 +21,13 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
+static void basicStats() {
     vector<int> N;
     int userInp = 0;
     int userInpSize = 0;
     cout << "Number of int's in List? " << endl;
     cin >> userInpSize;
-    cout << "Press enter after each number: " << endl;
+    cout << "Enter the numbers: " << endl;
     while (userInpSize > 0){
         cin >> userInp;
         N.push_back(userInp);
@@ -35,7 +35,7 @@ int main(int argc, const char * argv[]) {
     }
     
     double mean = accumulate(begin(N), end(N), 0.0)/N.size();
-
+    
     auto minMax = minmax_element(begin(N),end(N));
     
     int range = *minMax.second - *minMax.first;
@@ -44,6 +44,9 @@ int main(int argc, const char * argv[]) {
     cout << "Max: " << *minMax.first << endl;
     cout << "Min: " << *minMax.second << endl;
     cout << "Range: " << range << endl;
-        
+}
+
+int main(int argc, const char * argv[]) {
+    basicStats();
     return 0;
 }
